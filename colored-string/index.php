@@ -1,6 +1,12 @@
 <?php
-// Stampare una stringa verde se la variabile password passata in GET è uguale a “Boolean”, altrimenti stampare una stringa rossa.
 $password = $_GET["password"] ?? "";
+if (!empty($password)) {
+    if ($password === "Boolean") {
+        $class = "green";
+    } else {
+        $class = "red";
+    }
+}
 
 ?>
 
@@ -20,14 +26,9 @@ $password = $_GET["password"] ?? "";
     <main>
         <section>
             <?php
-            if (empty($password)) {
-                echo "Inserisci la password";
-            } else {
-                if ($password === "Boolean") {
-                    $class = "green";
-                } else {
-                    $class = "red";
-                }
+            if (empty($password)) { ?>
+                <p> Inserisci la passowrd</p>
+            <?php } else {
             ?>
                 <p class="<?php echo $class; ?>">
                     <?php echo $password; ?>
